@@ -1,7 +1,15 @@
 # chatmon
  The best chat companion ever!
+   
+## How to use Chatmon
 
-## Getting Started
+1. Create an account using email and password. (Password verification coming soon!)
+2. Switch back to login and use you registered account to login.
+3. To log out, press the menu on top left corner of the chat history, then press logout.
+4. Have fun!
+
+
+## Getting started for devs
 
 Make sure to have Node.js and npm installed (https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 
@@ -19,6 +27,7 @@ Make sure to have Node.js and npm installed (https://docs.npmjs.com/downloading-
    2. Run `npm i`
    3. Run `npm run dev` for debugging or `npm run build` followed by `npm run start` for production
 
+
 ## Note
+
 - Gemini API on free tier only allows 15 prompts per minute
-- To log out, press the menu on top left corner of the chat history, then press logout
