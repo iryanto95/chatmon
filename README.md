@@ -31,5 +31,5 @@ Make sure to have Node.js and npm installed (https://docs.npmjs.com/downloading-
 
 
 ## Note
-
 - Gemini API on free tier only allows 15 prompts per minute
+- Currently email is case sensitive and has no verification
