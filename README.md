@@ -6,7 +6,7 @@
 ## How to use Chatmon
 
 1. Create an account using email and password. (Email verification coming soon!)
-2. Switch back to login and use you registered account to login.
+2. Switch back to login and use your registered account to login.
 3. To log out, press the menu on top left corner of the chat history, then press logout.
 4. Have fun!
 
