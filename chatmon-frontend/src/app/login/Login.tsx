@@ -39,7 +39,7 @@ const Login = () => {
       else if (response?.data?.error)
         alert(response?.data?.error)
       else
-        alert('Sucessfully signed up')
+        alert('Sucessfully signed up') // Errors are already caught
     } 
     catch (error) {
       if (axios.isAxiosError(error))

@@ -7,7 +7,7 @@ require('dotenv').config()
 const mongoose = require('mongoose')
 
 const userSchema = new mongoose.Schema({
-  email: String,
+  email:    String,
   password: String
 })
 const User = mongoose.model('User', userSchema)
@@ -43,21 +43,24 @@ router.post('/login', async (req, res) => {
   const { email, password } = req.body
   const user = await User.findOne({ email })
 
-  if (!user || !(await bcrypt.compare(password, user.password)))
+  if (!user || !(await bcrypt.compare(password, user.password))) // bcrypt.compare is async
     return res.json({ error: 'Invalid credentials' })
 
   const token = jwt.sign({ email }, process.env.JWT_SECRET, { expiresIn: '1h' })
+
+  // Grand user a token for 3 days
   if (process.env.ENVIRONMENT === 'production')
-    res.cookie('chatmon_token', token, {  maxAge: 3*24*60*60*1000, sameSite: 'none', secure: true })
+    res.cookie('chatmon_token', token, { maxAge: 3*24*60*60*1000, sameSite: 'none', secure: true }) // Cookies in HTTPS behave differently
   else
-    res.cookie('chatmon_token', token, {  maxAge: 3*24*60*60*1000 })
+    res.cookie('chatmon_token', token, { maxAge: 3*24*60*60*1000 })
 
   res.json({ token })
 })
 
 router.post('/logout', (req, res) => {
+  // Remove the cookie
   if (process.env.ENVIRONMENT === 'production')
-    res.cookie('chatmon_token', '', {sameSite: 'none', secure: true})
+    res.cookie('chatmon_token', '', { sameSite: 'none', secure: true })
   else
     res.cookie('chatmon_token', '')
   res.status(200).send('Logged out')

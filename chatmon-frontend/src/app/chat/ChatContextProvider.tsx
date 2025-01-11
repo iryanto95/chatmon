@@ -14,9 +14,9 @@ export const ChatContext = createContext<IChatContext>({
 })
 
 export default function ChatContextProvider({ children }: { children: React.ReactNode }) {
-  const [ chatHistory, setChatHistory ] = useState<Array<{time: number, prompt: string, response: string}>>([])
-  const [ isLoadingResponse, setIsLoadingResponse ] = useState(false)
-  const [ isMounted, setIsMounted ] = useState(false) // To prevent hydration error
+  const [ chatHistory,       setChatHistory       ] = useState<Array<{time: number, prompt: string, response: string}>>([])
+  const [ isLoadingResponse, setIsLoadingResponse ] = useState(false) // Prevents user to spam submission before the previous one arrives
+  const [ isMounted,         setIsMounted         ] = useState(false) // To prevent hydration error
   
 
   useEffect(() => {
@@ -42,6 +42,7 @@ export default function ChatContextProvider({ children }: { children: React.Reac
     setIsMounted(true)
   }, [])
 
+  // Wait for dependencies to be mounted first to prevent hydration error
   if (!isMounted)
     return null
 

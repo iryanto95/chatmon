@@ -17,6 +17,7 @@ const chatSchema = new mongoose.Schema({
 const Chat = mongoose.model('Chat', chatSchema)
 
 router.post('/retrieve', authenticateToken, async (req, res) => {
+  // Use post request in case we want to cater for filtering and other queries
   const { email } = req.user
 
   if (!email)
