@@ -1,5 +1,7 @@
 # chatmon
  The best chat companion ever!
+
+ Use desktop Google Chrome for the best experience. Currently not optimized for mobile browsers.
    
 ## How to use Chatmon
 
