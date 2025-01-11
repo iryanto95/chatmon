@@ -11,7 +11,7 @@ Make sure to have Node.js and npm installed (https://docs.npmjs.com/downloading-
    2. Run `use chatmon` to create chatmon DB
 3. Clone the repo
 4. Go to backend server `cd chatmon-backend`
-   1. Create `.env` file containing 5 values: `PORT`, `JWT_SECRET`, `GEMINI_API_KEY`, `FRONTEND_URL` (for cookies), `MONGO_URI`. Your `MONGO_URI` should look something like  `mongodb://{hostname}:27017/chatmon`
+   1. Create `.env` file containing 6 values: `PORT`, `JWT_SECRET`, `GEMINI_API_KEY`, `ENVIRONMENT`, `FRONTEND_URL` (for cookies), `MONGO_URI`. Your `MONGO_URI` should look something like  `mongodb://{hostname}:27017/chatmon`. For hosting production build with HTTPS, set `ENVIRONMENT=production`
    2. Run `npm i`
    3. Run `node server.js`
 5. Go to frontend server `cd chatmon-frontend`
@@ -20,4 +20,5 @@ Make sure to have Node.js and npm installed (https://docs.npmjs.com/downloading-
    3. Run `npm run dev` for debugging or `npm run build` followed by `npm run start` for production
 
 ## Note
-Gemini API on free tier only allows 15 prompts per minute
+- Gemini API on free tier only allows 15 prompts per minute
+- To log out, press the menu on top left corner of the chat history, then press logout

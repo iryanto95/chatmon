@@ -1,13 +1,10 @@
 const router = require('express').Router()
-const bcrypt  = require('bcrypt')
-const jwt = require('jsonwebtoken')
+const bcrypt = require('bcrypt')
+const jwt    = require('jsonwebtoken')
 
 require('dotenv').config()
 
 const mongoose = require('mongoose')
-
-// Simulate a user database
-const users = [{ email: 'a@a.com', password: bcrypt.hashSync('a', 10) }]
 
 const userSchema = new mongoose.Schema({
   email: String,
@@ -50,12 +47,19 @@ router.post('/login', async (req, res) => {
     return res.json({ error: 'Invalid credentials' })
 
   const token = jwt.sign({ email }, process.env.JWT_SECRET, { expiresIn: '1h' })
-  res.cookie('chatmon_token', token, {  maxAge: 3*24*60*60*1000 })
+  if (process.env.ENVIRONMENT === 'production')
+    res.cookie('chatmon_token', token, {  maxAge: 3*24*60*60*1000, sameSite: 'none', secure: true })
+  else
+    res.cookie('chatmon_token', token, {  maxAge: 3*24*60*60*1000 })
+
   res.json({ token })
 })
 
 router.post('/logout', (req, res) => {
-  res.cookie('chatmon_token', '')
+  if (process.env.ENVIRONMENT === 'production')
+    res.cookie('chatmon_token', '', {sameSite: 'none', secure: true})
+  else
+    res.cookie('chatmon_token', '')
   res.status(200).send('Logged out')
 })
 
