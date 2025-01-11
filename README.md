@@ -1,7 +1,7 @@
 # chatmon
  The best chat companion ever!
 
- Use desktop Google Chrome for the best experience. Currently not optimized for mobile browsers.
+ Use desktop browsers for the best experience. Currently not supported for mobile browsers.
    
 ## How to use Chatmon
 
@@ -33,3 +33,4 @@ Make sure to have Node.js and npm installed (https://docs.npmjs.com/downloading-
 ## Note
 - Gemini API on free tier only allows 15 prompts per minute
 - Currently email is case sensitive and has no verification
+- Alert notifications can be suppressed, will be migrated over to toast or other apporaches
